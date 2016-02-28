@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function  () {
+	var oTxt1 = document.getElementById('txt1');
+	var oBtn1 = document.getElementById('btn1');
+	oBtn1.onclick = function(){
+        var oNewWind = window.open('about:blank','_blank') ;  //  保留原来的窗口  再打开一个窗口
+        oNewWind.document.write(oTxt1.value);
+	};
+};
+
+</script>
+</head>
+<body>
+<!-- <input type="button"value="打开窗口" onclick="window.open('http://www.baidu.com/');"> --> 
+
+
+<!-- <input type="button" value="write" onclick="document.write('abc')">  先清空  后再写 -->
+<!-- 
+<input type="button" value="open" onclick="window.open('运行.html');"><br> -->
+<textarea id="txt1"></textarea><br>
+<input id="btn1" type="button" value="运行">
+</body>
+</html>

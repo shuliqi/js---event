@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+*{
+  padding: 0px;
+  margin: 0px;
+}
+#form{
+  width: 900px;
+  height: 500px;
+  padding-top: 110px;
+  background:#09faf1; 
+  margin: 0px auto;
+  padding-left: 150px;
+  font-size: 25px;
+  position: relative;
+}
+input{
+  width: 300px;
+  height: 30px;
+}
+#pass{
+  margin-left: 50px;
+  margin-top: 50px;
+}
+#text{
+  margin-left: 25px;
+}
+.name span{
+  position: absolute;
+  margin-top: -34px;
+  margin-left: 450px;
+}
+#passque{
+  margin-top: 80px;
+}
+.tishi{
+  position: absolute;
+  margin-top: -35px;
+  margin-left: 450px;
+}
+p{
+  margin-left: 120px;
+  font-size: 20px;
+  color: #ccc;
+  visibility:hidden;
+}
+#qiangdu{
+  width: 304px;
+  height: 30px;
+  margin-left: 125px;
+}
+#qiangdu span{
+  padding-left: 38px;
+  padding-right: 38px;
+}
+.shuliqi{
+ position: absolute;
+  /*margin-top: -30px;*/
+ display: none;
+ margin-left:450px;
+ margin-top:-35px;
+}
+</style>
+<script>
+window.onload = function  () {
+ var oName = document.getElementById('text');
+ var aSpan = document.getElementsByTagName('span');
+ var oTiShiName = aSpan[0];
+ var oTishiyum = aSpan[1];
+ var oZong = aSpan[3];
+ var oQiang = aSpan[4];
+ var oQueRen = aSpan[5];
+ var oZiFu = document.getElementsByTagName('p')[0];
+ var oPass = document.getElementById('pass');
+ var oQue = document.getElementById('passque');
+ oName.onfocus = function  () {  //onfocus:得到焦点的时候
+   oTiShiName.style.display = 'block';
+   oTiShiName.innerHTML = '5-25个字符 一般推荐英文用户名';
+ }
+ oName.onkeyup= function  () {
+    oZiFu.style.visibility = 'visible';
+    oNamelength = getStrLength(this.value);
+    oZiFu.innerHTML = oNamelength + "个字符";
+    if (oNamelength == 0) {
+         oZiFu.style.visibility = 'hidden';
+    }
+ }
+oName.onblur = function  () {  //onblue:失去焦点的时候
+    var re = /[^\w\u4e00-\w9fa5]/g; 
+    if (re.test(this.value)) {
+      oTiShiName.innerHTML = '含有非法字符';
+    }
+    else if(this.value == ""){
+      oTiShiName.innerHTML = '不能为空';
+    }
+     else if(oNamelength > 25){
+      oTiShiName.innerHTML = '不能超过25个字符';
+    }
+     else if(oNamelength < 6){
+      oTiShiName.innerHTML = '不能少于6个字符';
+    }
+    else{
+      oTiShiName.innerHTML = 'OK!';
+    }
+ }
+ oPass.onfocus = function () {
+     oTishiyum.style.display = 'block';
+     oTishiyum.innerHTML = '请使用数字，字母，符号符号组合的密码'
+ }
+ oPass.onkeyup = function () {
+      if (this.value.length >5) {
+        oZong.style.background = '#37e0f4';
+        oQue.removeAttribute('disabled');  //取消锁定
+        oQueRen.style.display = 'block';
+      }else{
+        oQueRen.style.display = 'none';
+        oZong.style.background = '';
+        oQue.setAttribute('disabled');  //设置锁定
+        oQiang.style.background = '';
+       
+     }
+     if (this.value.length >10) {
+        oQiang.style.background = '#37e0f4';
+      }else{
+        oQiang.style.background = '';
+       
+     }
+ }
+ oPass.onblur = function () {
+   var m = findstr(this.value,pass.value[0]);
+    if(this.value == ""){
+      oTishiyum.innerHTML = '不能为空'
+    }
+    else if(m == this.value.length){
+     oTishiyum.innerHTML = '不能使用相同字符';
+    }
+    else if(this.value.length < 6 ){
+     oTishiyum.innerHTML = '密码不能少于6个字符';
+    }
+    else if(this.value.length > 25 ){
+     oTishiyum.innerHTML = '密码不能超过25个字符';
+    }
+    else{
+    oTishiyum.innerHTML = 'OK!';
+    }
+ }
+ oQue.onblur = function  (argument) {
+   if (oQue.value == pass.value) {
+       oQueRen.innerHTML = 'OK!';
+   }
+ }
+
+}
+function findstr (str,n) {
+  var tem = 0;
+  for (var i = 0; i < str.length; i++) {
+    if (str.charAt(i) == n) {
+      tem++;
+    }
+  }
+  return tem ;
+}
+function getStrLength (str) {
+return str.replace(/[^\x00-xff]/g,"xx").length ;  //[\x00-\xff]:单字节
+}
+</script>
+</head>
+
+<body>
+<form id="form">
+  <div class="name">
+      用户名：<input type="text" id="text" />
+      <span></span>
+      <p>几个字符</p>
+  </div>
+  <div class="pass">
+      密码：<input type="password" id="pass" />
+      <span class="tishi"></span>
+      <div id="qiangdu"><span style="background:#37e0f4;">弱</span><span>中</span><span>强</span></div>
+  </div>
+  <div class="quepass">
+      确认密码：<input type="password" id="passque" disabled = "" />
+      <span class="shuliqi">请再输一次密码</span>
+  </div>
+</form>
+</body>
+</html>

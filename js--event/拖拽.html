@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+
+    <title>td实例</title>
+
+    <style type="text/css">
+    *{
+    	padding: 0px;
+    	margin: 0px;
+    }
+    #container{
+    	background-color: gray;
+    	width: 800px;
+    	height: 500px;
+    	position: relative;
+    }
+    #box{
+    	background-color: #36e69d;
+    	width: 100px;
+    	height: 100px;
+    	position: absolute;
+    	left: 100px;
+    }
+    #newbox{
+    	width: 100px;
+    	height: 100px;
+    	background-color: #36e69d;
+    	position: absolute;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function(){
+    	if(document.getElementById("newbox")){
+    		var box = document.getElementById("newbox");
+    	}else{
+    		var box = document.getElementById("box");
+    	}
+    	var container = document.getElementById("container");
+    	
+    	var newleft;
+    	var orgleft = box.offsetLeft;
+    	// console.log(orgleft);
+    	var newtop;
+    	var orgtop = box.offsetTop;
+    	box.onmousedown = function(){
+    		// console.log(event.clientX);
+    		var id = this.id;
+    		// console.log(id);
+    		newtop = event.clientY - orgtop;
+    		newleft = event.clientX - orgleft;
+    	}
+    	container.onmouseup= function(){
+    		var newbox = document.createElement("div");
+    		newbox.id = "newbox";
+    		container.appendChild(newbox);
+    		// console.log(newbox.offsetWidth);
+    		newbox.style.left = event.clientX - newleft + "px";
+    		newbox.style.top = event.clientY - newtop +"px";
+    		// console.log(newbox.style.top);
+    		newbox.style.width = 100 + "px";
+    		newbox.style.height= 100 + "px";
+    		newbox.style.background = "#36e69d";
+    		newbox.style.display = "block";
+    		container.removeChild(box);
+    	}
+    }
+    </script>
+</head>
+
+<body>
+<div id="container">
+	<div id="box"></div>
+</div>
+</body>
+
+<ml>

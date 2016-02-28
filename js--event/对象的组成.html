@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+  #btn1{
+    margin-left: 500px;
+    margin-top: 20px;
+  }
+</style>
+<script>
+window.onload = function  () {
+   var oBtn = document.getElementById('btn1');
+   oBtn.onclick = function(){
+    ajax('aaa.txt? t= ' + new Date().getTime(),function(str){
+    //? t= ' + new Date().getTime()让每次获取的不一样
+         alert(str);
+    },function(){
+      alert('失败');
+    })
+      
+   }
+
+   // oBtn.onclick = function(){
+   //  ajax('aar.txt? t= ' + new Date().getTime(),function(str){
+   //  //? t= ' + new Date().getTime()让每次获取的不一样
+   //       arr = eval(str);
+   //       alert(arr[0]);
+   //  },function(){
+   //    alert('失败');
+   //  })
+      
+
+   //   oBtn.onclick = function(){
+   //  ajax('json.txt? t= ' + new Date().getTime(),function(str){
+   //  //? t= ' + new Date().getTime()让每次获取的不一样
+   //       arr = eval(str);
+   //       alert(arr[0].a);
+   //  },function(){
+   //    alert('失败');
+   //  })
+   // }
+}
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="读取"/>
+</div>
+</body>
+</html>

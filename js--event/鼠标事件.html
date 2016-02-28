@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+  #div1 {
+    width: 200px;
+    height: 200px;
+    background: #000;
+    margin: 0px auto;
+    margin-top: 20px;
+    position: absolute;
+  }
+  #btn1{
+    margin-left: 500px;
+    margin-top: 20px;
+  }
+</style>
+<script>
+//冒泡的事件   取消冒泡事件；   点击显示  DIV会显示  点击屏幕的任何位置  Div会显示
+// function getPos (ev){
+//   var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+//   var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+  
+//   return {x: ev.clientX+scrollLeft -100 , y: ev.clientY+scrollTop-100};
+
+// }
+// window.onload = function  (ev) {
+//  document.onmousemove=function (ev){
+//    var oEvent=ev||event;
+//    var oDiv=document.getElementById('div1');
+//    var w = oDiv.width;
+//    var pos=getPos(oEvent);
+  
+//    oDiv.style.left = pos.x+'px';
+//    oDiv.style.top = pos.y +'px';
+//   };
+ 
+// }
+window.onload = function(){
+  var oDiv = document.getElementById('div1');
+  document.onmousemove = function(ev){
+      var oEvent = ev ||event;
+      var get = getPos(oEvent,oDiv)
+      oDiv.style.top = get.y + 'px';
+      oDiv.style.left = get.x + 'px';
+  }
+}
+function getPos(ev,obj){
+      var oDiv = document.getElementById('div1');
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+      var disX = scrollLeft + ev.clientX - obj.offsetWidth/2 ;
+      var disY = scrollTop + ev.clientY - obj.offsetHeight/2; 
+      return {x:disX,y:disY}
+}
+</script>
+</head>
+<body style="height:2000px;">
+<div id="div1">
+
+</div>
+</body>
+</html>

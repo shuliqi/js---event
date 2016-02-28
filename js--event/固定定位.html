@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	#div1{
+		width: 200px;
+		height: 200px;
+		background: red;
+		position: absolute;
+		right: 0;
+        bottom: 0;
+	}
+	body{
+		height: 2000px;
+	}
+</style>
+<script>
+window.onscroll = window.onresize = function  () {  //window.onresize：当窗口改变大小的时候发生
+	var oDiv = document.getElementById('div1');
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	oDiv.style.top = document.documentElement.clientHeight - oDiv.offsetHeight + scrollTop + 'px';
+}
+</script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

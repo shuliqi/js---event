@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+
+</style>
+<script> 
+
+//一般不要在系统已有的对象上加方法
+//所以才有的object  obje的功能：没有功能
+function createPerson(name,qq){  //构造函数：构建一个对象
+	//原料
+	// var obj = new  Object(); 
+	//没有new的时候 系统会偷偷的替我们做：
+	//var this= new Object（）
+	//加工 
+    this.name = name;
+    this.qq = qq;
+    this.showName = function  () {
+	    alert('我的名字叫： '+this.name);
+    }
+    this.showQQ = function  () {
+	    alert("我的QQ： "+this.name);
+    }
+    //出厂
+    // 偷偷的返回
+    //return this
+    //return obj;
+}
+var obj =new createPerson('shuliqi','231334534')
+obj.showName();
+obj.showQQ ();
+
+
+//缺点  1占用大量的内存   2没有new  
+//  解决new方法如上
+
+</script>
+
+</head>
+
+<body>
+</body>
+</html>

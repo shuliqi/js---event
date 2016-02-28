@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	#slq{
+		width:150px;
+		height: 100px;
+		background-color: #000;
+		color: white;
+		display: none;
+		position: absolute;
+	}
+</style>
+<script>
+// document.oncontextmenu = function  (ev) {
+// 	var oEvent = ev ||event;
+// 	var oDiv = document.getElementById('slq');
+// 	oDiv.style.display = 'block';  
+// 	oDiv.style.left=oEvent.clientX+'px';
+// 	oDiv.style.top=oEvent.clientY+'px';
+// 	return false;   //过滤系统的菜单
+// }
+// document.onclick=function ()
+// {
+// 	var oDiv=document.getElementById('slq');
+	
+// 	oDiv.style.display='none';
+// };
+document.oncontextmenu = function (ev) {
+	var oEvent = ev || event ;        //获取鼠标的事件
+	var oDiv = document.getElementById('slq');
+	oDiv.style.display = 'block';
+	oDiv.style.left = oEvent.clientX + 'px';
+	oDiv.style.top = oEvent.clientY + 'px';
+	return false;
+}
+</script>
+</head>
+
+<body>
+<div id="slq">
+	<p>欢迎来到舒丽琦家</p>
+</div>
+</body>
+</html>

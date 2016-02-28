@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+
+</style>
+<script> 
+function A(){
+   this.abc = 12 ;         //构造函数
+}
+A.prototype.show = function  ) {
+   alert(this.abc);
+}
+function B () {            //构造函数
+     A.call(this);        //继承A
+ }
+B.prototype = A.prototype;  //A上有的东西都继承到B 上来
+var obj= new B ();
+obj.show();
+
+
+
+
+ // function show (a,b){
+ //    alert('this是：' +this+ '\na是：'+a+'\nb是：'+b);
+ // }
+ // // show();
+ //  show.call('abc',12,23);     // call可以改变函数里面的this
+</script>
+
+</head>
+
+<body>
+</body>
+</html>
